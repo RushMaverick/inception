@@ -9,19 +9,18 @@ RUN apk update && \
 
 # Expose port for HTTPS
 EXPOSE 443
-EXPOSE 80
 
 # # Ensure that we have the dir to store PID and SSL certs
 RUN mkdir -p /run/nginx /etc/nginx/ssl
 
-# # Generate SSL cert & key
+# Generate SSL cert & key
 RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
-    -out /etc/nginx/ssl/certificate.crt \
-    -keyout /etc/nginx/ssl/certificate.key \
+    -out /etc/nginx/ssl/inception.crt \
+    -keyout /etc/nginx/ssl/inception.key \
     -subj "/C=FI/ST=Helsinki/L=Helsinki/O=42/OU=Hive/CN=rrask.42.fr"
 
 # # Add a new user within the container
-RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
+# RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
 # Copy test HTML over to the container.
 # If you just started, make nginx serve you this page! :-)
