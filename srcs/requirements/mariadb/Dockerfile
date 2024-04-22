@@ -7,10 +7,10 @@ RUN apk update && \
 
 EXPOSE 3306
 
-COPY conf/mariadb.conf /etc/my.cnf.d/mariadb.conf
-RUN chmod 644 /etc/my.cnf.d/mariadb.conf
+COPY conf/mariadb.cnf /etc/my.cnf.d/mariadb.cnf
+RUN chmod 644 /etc/my.cnf.d/mariadb.cnf
 
 COPY ./tools/mariadb_setup.sh /tmp/mariadb_setup.sh
 RUN chmod +x /tmp/mariadb_setup.sh
 
-ENTRYPOINT ["sh", "/tmp/mariadb-setup.sh"]
+ENTRYPOINT ["sh", "/tmp/mariadb_setup.sh"]
