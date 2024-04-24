@@ -42,7 +42,7 @@ services:
     build:
       context: ./requirements/wordpress/
       dockerfile: Dockerfile
-    image: wordpress-img:release
+    image: wordpress:release
     container_name: wordpress-cont
     ports:
       - "9000:9000"
@@ -59,7 +59,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    image: mariadb-img:release
+    image: mariadb:release
     container_name: mariadb-cont
     ports:
       - "3306:3306"

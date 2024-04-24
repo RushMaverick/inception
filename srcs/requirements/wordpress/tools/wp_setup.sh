@@ -59,7 +59,7 @@ wp user create \
 	--allow-root
 
 # Install theme for WordPress
-wp theme install inspiro \
+wp theme install neve \
 	--activate \
 	--allow-root
 
