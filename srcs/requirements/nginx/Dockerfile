@@ -20,17 +20,11 @@ RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
     -subj "/C=FI/ST=Helsinki/L=Helsinki/O=42/OU=Hive/CN=rrask.42.fr"
 
 # # Add a new user within the container
-# RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
-
-# Copy test HTML over to the container.
-# If you just started, make nginx serve you this page! :-)
+RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
 # Copy NGINX configuration to the container
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN chmod 644 /etc/nginx/nginx.conf
-COPY tools/index.html /etc/www/html/index.html
-RUN chmod -R 777 /etc/www/html/
-# RUN chown -R www-data:www-data /etc/www/html/
 
 
 # Start NGINX
